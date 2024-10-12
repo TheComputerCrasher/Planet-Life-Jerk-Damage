@@ -1,0 +1,23 @@
+function checkOutcome() {
+	jerkDam = 0;
+	jerksStrengthed = 0;
+	jerksArmored = 0;
+	for (var i = 0; i < jerkCount; i++) {
+		var strengthRoll = (Math.random() * (state.derekToughness + allDerekStats["strength"]));
+		if (strengthRoll < jerkCount) {
+			if (strengthRoll + allDerekStats["armor"] < jerkCount) {
+				jerkDam += Math.floor((Math.random() * 4) + 1);
+			} else {
+				jerksArmored++;
+			}
+		} else {
+			jerksStrengthed++;
+		}
+	}
+	updateState('derekHealth', state.derekHealth - jerkDam);
+	// for (var i = 0; i < jerkCount; i++) {
+	// 	if ((Math.random() * state.derekToughness) < jerkCount) {
+	// 		updateState('derekHealth', state.derekHealth - Math.floor((Math.random() * 4) + 1));
+	// 	}
+	// }
+}
